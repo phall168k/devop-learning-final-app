@@ -35,6 +35,26 @@ services:
       - internal_network
     restart: unless-stopped
 
+  load-balancer-prod:
+    image: nginx:alpine
+    container_name: load-balancer-prod
+    environment:
+      API_PORT: ${API_PORT}
+      NGINX_SERVER_NAME: ${NGINX_SERVER_NAME}
+      NGINX_MAX_BODY: ${NGINX_MAX_BODY}
+    ports:
+      - "80:80"
+    depends_on:
+      api-prod:
+        condition: service_healthy
+    volumes:
+      - ./nginx/default.conf.template:/etc/nginx/templates/default.conf.template:ro
+    networks:
+      - internal_network
+      - external_network
+    restart: unless-stopped
+
+
 # =================================
 # Network Setup
 # =================================
