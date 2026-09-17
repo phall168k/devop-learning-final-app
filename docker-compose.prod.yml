@@ -1,6 +1,32 @@
 services:
 
 # =================================
+# Postgres
+# =================================
+  postgres-prod:
+    image: postgres:16-alpine
+    container_name: postgres-prod
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    volumes:
+      - postgres_prod_data:/var/lib/postgresql/data
+    networks:
+      - internal_network
+    restart: unless-stopped
+
+# =================================
 # NestJS
 # =================================
   api-prod:
@@ -31,6 +57,9 @@ services:
       timeout: 5s
       retries: 5
       start_period: 20s
+    depends_on:
+      postgres-prod:
+        condition: service_healthy
     networks:
       - internal_network
     restart: unless-stopped
@@ -91,6 +120,11 @@ services:
       - external_network
     restart: unless-stopped
 
+# =================================
+# Volumes
+# =================================
+volumes:
+  postgres_prod_data:
 
 # =================================
 # Network Setup
@@ -101,3 +135,4 @@ networks:
     internal: true
   external_network:
     driver: bridge
+
