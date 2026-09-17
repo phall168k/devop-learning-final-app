@@ -1,0 +1,46 @@
+# Applies to the build context root and nested NestJS / NuxtJS apps.
+# Install dependencies and compile the application inside the image.
+**/node_modules
+**/dist
+**/build
+**/*.tsbuildinfo
+
+# Nuxt generated files and caches
+**/.nuxt
+**/.output
+**/.nitro
+**/.data
+**/.cache
+
+# Test coverage
+**/coverage
+**/.nyc_output
+
+# Logs and runtime files
+**/logs
+**/*.log
+**/*.pid
+**/*.pid.lock
+**/report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Local environment files (provide runtime values through Docker)
+**/.env
+**/.env.*
+!**/.env.example
+
+# Version control
+**/.git
+**/.gitignore
+
+# Editors, temporary files, and operating systems
+**/.idea
+**/.fleet
+**/.vscode
+**/.temp
+**/.tmp
+**/*.swp
+**/*.swo
+**/.DS_Store
+**/Thumbs.db
+
+# Keep application source, package manifests, lockfiles, and build configs.
