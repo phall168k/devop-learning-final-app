@@ -1,0 +1,42 @@
+# Dependencies (applies to backend and frontend)
+node_modules/
+
+# NestJS / TypeScript build output
+dist/
+build/
+*.tsbuildinfo
+
+# Nuxt development and build output
+.nuxt/
+.output/
+.nitro/
+.data/
+.cache/
+
+# Tests and coverage
+coverage/
+.nyc_output/
+
+# Logs and runtime files
+logs/
+*.log
+*.pid
+*.pid.lock
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Local environment files (keep example configuration tracked)
+.env
+.env.*
+!.env.example
+
+# Temporary files
+.temp/
+.tmp/
+*.swp
+*.swo
+
+# Editors and operating systems
+.idea/
+.fleet/
+.DS_Store
+Thumbs.db
