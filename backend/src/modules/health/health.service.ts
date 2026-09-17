@@ -4,7 +4,7 @@ import { Injectable } from '@nestjs/common';
 export class HealthService {
     public healthCheck() {
         return {
-            status: 'healthy',
+            status: 'healthys',
             timestamp: Date.now(),
             uptime: process.uptime(),
         };
