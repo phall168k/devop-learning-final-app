@@ -1,7 +1,7 @@
 import { MigrationInterface, QueryRunner, Table, TableForeignKey } from "typeorm";
 import { commonFields } from "../common.fields";
 
-const tableName = 'admin.roles';
+const tableName = 'admin.categories';
 
 export class CategoryMigration17887719425390 implements MigrationInterface {
 
@@ -20,9 +20,15 @@ export class CategoryMigration17887719425390 implements MigrationInterface {
                     {
                         name: 'name',
                         type: 'varchar',
-                        length: '160',
+                        length: '250',
                         isUnique: true,
                         isNullable: false,
+                    },
+                    {
+                        name: 'description',
+                        type: 'varchar',
+                        length: '250',
+                        isNullable: true,
                     },
                     ...commonFields,
                 ],
