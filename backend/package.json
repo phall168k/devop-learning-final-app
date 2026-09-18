@@ -25,6 +25,7 @@
     "migration:run": "npm run typeorm -- migration:run -d src/database/data-source.ts",
     "migration:revert": "npm run typeorm -- migration:revert -d src/database/data-source.ts",
     "seed": "npm run build && node ./node_modules/typeorm-extension/bin/cli.mjs seed run -d dist/database/data-source.js",
+    "seed:prod": "node ./node_modules/typeorm-extension/bin/cli.mjs seed run -d dist/database/data-source.js --preserveFilePaths",
     "migration:fresh": "npm run migration:drop && npm run migration:run && npm run seed",
     "migration:run:prod": "node ./node_modules/typeorm/cli.js migration:run -d dist/database/data-source.js",
     "migration:revert:prod": "node ./node_modules/typeorm/cli.js migration:revert -d dist/database/data-source.js",
