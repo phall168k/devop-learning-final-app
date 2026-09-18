@@ -74,6 +74,7 @@ services:
       NODE_ENV: production
       HOST: ${HOST}
       PORT: ${PORT}
+      API_URL: ${API_URL}
     expose:
       - "${PORT}"
     healthcheck:
