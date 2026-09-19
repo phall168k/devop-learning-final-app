@@ -7,7 +7,7 @@
     const config = useRuntimeConfig();
     const handleGetCategories  = async () => {
         try {
-            const response = await $fetch(`http://api-prod:8000/api/v1/admin/master-data/categories`);
+            const response = await $fetch(`http://nest_backend/api/v1/admin/master-data/categories`);
             console.log('DATA', response);
         } catch (error) {
             console.log(error);
