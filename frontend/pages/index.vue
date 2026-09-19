@@ -4,17 +4,21 @@
 </template>
 
 <script setup lang="ts">
-    const config = useRuntimeConfig();
-    const handleGetCategories  = async () => {
-        try {
-            const response = await $fetch(`${config.public.apiUrl}admin/master-data/categories`);
-            console.log('DATA', response);
-        } catch (error) {
-            console.log(error);
-        }
-    }
+const config = useRuntimeConfig()
 
-    onMounted(() => {
-        handleGetCategories();
-    })
+const handleGetCategories = async () => {
+  try {
+    const response = await $fetch(
+      `${config.public.apiUrl}admin/master-data/categories`
+    )
+
+    console.log('DATA', response)
+  } catch (error) {
+    console.error('Failed to get categories:', error)
+  }
+}
+
+onMounted(() => {
+    handleGetCategories();
+})
 </script>
